@@ -1254,6 +1254,7 @@ attribute.
 The 'BlockId' element has the same syntax and serves the same function
 to the <<X30,anchor inline macro>>.
 
+
 [[X79]]
 AttributeList Element
 ---------------------
@@ -4552,6 +4553,7 @@ arguments. The syntax is `{<action>:<arguments>}`.
 - Closing brace characters inside system attribute arguments must be
   escaped with a backslash.
 
+
 [[X60]]
 Intrinsic Attributes
 --------------------
@@ -5546,6 +5548,7 @@ NOTE: If you want to disable unconstrained quotes, the new alternative
 constrained quotes syntax and the new index entry syntax then you can
 define the attribute `asciidoc7compatible` (for example by using the
 `-a asciidoc7compatible` command-line option).
+
 
 [[X38]]
 [appendix]
