@@ -2,19 +2,7 @@
 # Author: Patrick Huck <phuck@lbl.gov>
 
 # filelist (needs to be in order!)
-FILELIST= intro.txt \
-	  modsim.txt \
-	  cocktail.txt \
-	  inmedcontrib.txt \
-	  data-analysis.txt \
-	  evt-trk-select.txt \
-	  pid.txt \
-	  bgsub.txt \
-	  effcorr.txt \
-	  results.txt \
-	  appendix.txt \
-	  ckon.txt \
-	  stv0tofcorr.txt
+FILELIST=$(shell cat filelist.txt)
 
 # symbolic links
 LINKLIST = blogpost.py images
