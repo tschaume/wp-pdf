@@ -1,8 +1,9 @@
 
-Original: http://asciidoc.org/
 
 Introduction
 ------------
+Original: http://asciidoc.org/
+
 AsciiDoc is a plain text human readable/writable document format that
 can be translated to DocBook or HTML using the asciidoc(1) command.
 You can then either use asciidoc(1) generated HTML directly or run
