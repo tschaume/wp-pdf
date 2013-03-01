@@ -1,0 +1,24 @@
+AsciiDoc User Guide
+===================
+Stuart Rackham <srackham@gmail.com>
+:doctype: book
+
+AsciiDoc is a text document format for writing notes, documentation,
+articles, books, ebooks, slideshows, web pages, blogs and UNIX man
+pages.  AsciiDoc files can be translated to many formats including
+HTML, PDF, EPUB, man page.  AsciiDoc is highly configurable: both the
+AsciiDoc source file syntax and the backend output markups (which can
+be almost any type of SGML/XML markup) can be customized and extended
+by the user.
+
+/////////////////////////////////////////
+add the following 3 lines at the top of
+each post including the empty line
+This is for the Makefile
+replace <title> and adjust header level
+
+:blogpost-title: <title>
+:blogpost-posttype: page
+//=== <title>
+//////////////////////////////////////////
+

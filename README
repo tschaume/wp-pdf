@@ -1,0 +1,44 @@
+wp_pdf
+======
+
+WordPress / asciidoc / a2x / docbook / latex / pdf
+
+- setup site in Linode VPS: +
+  http://library.linode.com/hosting-website#sph_configuring-name-based-virtual-hosts
+- create a database on Linode VPS: +
+  http://library.linode.com/hosting-website#sph_creating-a-database
+- install Wordpress: +
+  http://library.linode.com/web-applications/cms-guides/wordpress
+- add the following to wp-config.php
+
+  ```
+  // forces the filesystem method: "direct", "ssh", "ftpext", or "ftpsockets"
+  define('FS_METHOD', 'direct');
+  // absolute path to root installation directory
+  define('FTP_BASE', '/home/patrick/public/star.the-huck.com/public/');
+  // absolute path to "wp-content" directory
+  define('FTP_CONTENT_DIR', '/home/patrick/public/star.the-huck.com/public/wp-content/');
+  // absolute path to "wp-plugins" directory
+  define('FTP_PLUGIN_DIR ', '/home/patrick/public/star.the-huck.com/public/wp-content/plugins/');
+  // absolute path to your SSH public key
+  define('FTP_PUBKEY', '/home/patrick/.ssh/id_rsa_wp-star.pub');
+  // absolute path to your SSH private key
+  define('FTP_PRIVKEY', '/home/patrick/.ssh/id_rsa_wp-star');
+  // either your FTP or SSH username
+  define('FTP_USER', 'patrick');
+  // password for FTP_USER username
+  //define('FTP_PASS', 'password');
+  // hostname:port combo for your SSH/FTP server
+  define('FTP_HOST', 'the-huck.com');
+  ```
+
+- sudo chown -R www-data:www-data public/
+- list of plugins:
+  - Options Framework
+  - Disable Comments
+  - CMS Page Order
+  - Multi-level Navigation Plugin
+  - WP Google Fonts
+  - WP PHP widget
+- use asciidoc userguide.txt as example case
+
