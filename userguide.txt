@@ -44,6 +44,7 @@ and fixing syntax errors, than I was writing the documentation.
 [[X6]]
 Getting Started
 ---------------
+
 Installing AsciiDoc
 ~~~~~~~~~~~~~~~~~~~
 See the `README` and `INSTALL` files for install prerequisites and
@@ -921,6 +922,7 @@ configuration file parameters.
 
 Text Formatting
 ---------------
+
 [[X51]]
 Quoted Text
 ~~~~~~~~~~~
