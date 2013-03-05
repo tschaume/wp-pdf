@@ -64,9 +64,9 @@ prepare for deployment
 
 in your working dir:
 
-- create a symbolic link named ```blogpost.py``` linking to your blogpost
+- create a symbolic link named 'blogpost.py' linking to your blogpost
   installation
-- create a symbolic link named ```images``` linking to your image directory
+- create a symbolic link named `images` linking to your image directory
 
 both are checked when invoking the Makefile.
 
