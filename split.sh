@@ -33,8 +33,8 @@ writeHeader() { # line, title, filename, tmp, levelstring
   rm xxx 
 }
 
-if [ -d out ]; then rm -rf out; fi
-mkdir out
+if [ ! -d out ]; then mkdir out; fi
+find out -type f -name "*.txt" | xargs rm
 if [ -e $filelist ]; then rm $filelist; fi
 
 prev=1
@@ -49,9 +49,7 @@ for h in $lvl1; do
   mkdir $outdir
 
   if grep -qn '^~~~' $tmp; then # sub-titles
-
     ln=`grep -n '^~~~' $tmp | awk -F: '{print $1}' | tr '\n' ' '`
-    #ln="$ln "`cat $tmp | wc -l`
 
     # level 1 title
     filename=$outdir/$dirname.txt

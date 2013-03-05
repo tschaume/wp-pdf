@@ -1,28 +1,45 @@
+# Copyright (c) 2013 Patrick Huck
 # Makefile to generate pdf, tex & hp from asciidoc
-# Author: Patrick Huck <phuck@lbl.gov>
+# Author: Patrick Huck (@tschaume)
+
+# pdf document name
+DOCOUT=asciidoc
+# your initials
+INITIALS=PH
 
 # filelist (needs to be in order!)
+# put paths to all asciidoc source files in
+# filelist.txt or list them here directly
+# you can submit single files via the *.txt target
+# use SIMSTR=-n to simulate submission
 FILELIST=$(shell cat filelist.txt)
 
 # symbolic links
-LINKLIST = blogpost.py images
+# this list is checked in the 'check' target
+# and requirement for successfull compilation
+# remove 'images' if no images included
+#    (or adjust to image include in source file)
+LINKLIST = #images
+
+###############################
+#  NO CHANGES REQUIRED BELOW  #
+###############################
 
 # variables
-DOCOUT=ana-note
 DOCINFO=docinfo.xml
 DOCINFOREV=$(DOCOUT)-$(DOCINFO)
 TAGLIST=$(shell git tag -l | tr '\n' ' ')
 
 # shell commands
 SIMSTR=
-BPCMD=./blogpost.py $(SIMSTR) -p post
+BPCMD=blogpost.py $(SIMSTR) -p post
 SEDCMD=sed -e '/^:blogpost/d' -e 's:\/\/=:=:'
 
 # phony takes target always as out-of-date
-.PHONY: all note hp docinfo check clean
+.PHONY: all pdf hp docinfo check clean
 
 # default target if none specified
-all: note hp thesis
+all: pdf hp latex
 
 # define directive for single revision entry
 # argument: tagname
@@ -31,7 +48,7 @@ define REVCMD
 echo '<revision>' >> $(DOCINFOREV)
 echo '  <revnumber>'$(1)'</revnumber>' >> $(DOCINFOREV)
 echo '  <date>'$(shell git log -1 $(1) --format=%ad --date=short)'</date>' >> $(DOCINFOREV)
-echo '  <authorinitials>PH</authorinitials>' >> $(DOCINFOREV)
+echo '  <authorinitials>$(INITIALS)</authorinitials>' >> $(DOCINFOREV)
 echo '  <revremark>'$(shell git log -1 $(1) --format=%B)'</revremark>' >> $(DOCINFOREV)
 echo '</revision>' >> $(DOCINFOREV)
 endef
@@ -57,14 +74,14 @@ docinfo:
 	$(foreach tag, $(TAGLIST), $(call REVCMD,$(tag)))
 	echo '</revhistory>' >> $(DOCINFOREV)
 
-# generate pdf analysis note
-note: docinfo check
+# generate pdf
+pdf: docinfo check
 	cp preamb.txt $(DOCOUT).txt
 	@$(foreach file, $(FILELIST), $(SEDCMD) $(file) >> $(DOCOUT).txt; )
 	$(call A2XCMD,pdf,$(DOCOUT).txt,.)
 
-# generate page-by-page tex files for inclusion in thesis tex
-thesis: check
+# generate page-by-page tex files for inclusion in latex document
+latex: check
 	mkdir tex && ln -s images tex/images
 	@$(foreach file, $(FILELIST), $(call A2XCMD,tex,$(file),tex); )
 

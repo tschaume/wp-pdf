@@ -1,3 +1,5 @@
+// preamble file used in pdf output
+
 AsciiDoc User Guide
 ===================
 Stuart Rackham <srackham@gmail.com>

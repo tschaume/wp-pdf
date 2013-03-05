@@ -35,14 +35,27 @@ setup wordpress
   ```
 
 - `$ sudo chown -R www-data:www-data public/`
+- install Foghorn theme, adjust 'Appearance -> Theme Options'
 - install the following wordpress plugins:
   * Options Framework
   * Disable Comments
   * CMS Page Order
   * Multi-level Navigation Plugin
-  * WP Google Fonts
+  * WP Google Fonts (I use Gentium Book Basic)
   * WP PHP widget
   * MathJax-Latex (change options: Force Load, Use wp-latex syntax?, Use MathJax CDN Service?)
+- set up Sidebar in 'Appearance->Widgets':
+  * Search
+  * Section Index
+  * PHP Widget w/ the following code:
+
+    -------------------
+    next page: <?php echo next_page_not_post('%title','expand','sort_column=menu_order'); ?><br>
+    previous page: <?php echo previous_page_not_post(' %title','expand','sort_column=menu_order'); ?>
+    --------------------
+
+- go to 'Settings->Permalinks' and use post name as URL
+- after you pushed your front page, go to 'Settings->Reading' and choose it as static front page
 
 install blogpost
 ----------------
@@ -56,18 +69,22 @@ version 0.9.5:
 2. fix inline-latex via the config macro +
    http://www.mail-archive.com/asciidoc@googlegroups.com/msg00104.html
 
-Clone it from https://github.com/tschaume/blogpost and see the README for
-install instructions.
+Clone it from https://github.com/tschaume/blogpost and see the note at the top
+of README for install instructions.
 
 prepare for deployment
 ----------------------
 
-in your working dir:
+in your working dir (see Makefile):
 
-- create a symbolic link named 'blogpost.py' linking to your blogpost
-  installation
-- create a symbolic link named `images` linking to your image directory
+- adjust docinfo.xml
+- if you'll be including images, create a symbolic link named `images` linking
+  to your image directory (adjust SYMLINK in Makefile)
+- and/or adjust Makefile
 
-both are checked when invoking the Makefile.
+use Makefile for hp, pdf & latex
+--------------------------------
 
+let wp-pdf do the magic by: `make`, `make pdf`, `make hp`, `make latex`, `make out/Introduction/Introduction.txt`, `make clean`
 
+after publishing a page for the first time: use 'Pages->Page Order' to arrange pages
