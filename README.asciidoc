@@ -34,38 +34,38 @@ setup wordpress
   define('FTP_HOST', 'the-huck.com');
   ```
 
-- ```$ sudo chown -R www-data:www-data public/```
+- `$ sudo chown -R www-data:www-data public/`
 - install the following wordpress plugins:
-  - Options Framework
-  - Disable Comments
-  - CMS Page Order
-  - Multi-level Navigation Plugin
-  - WP Google Fonts
-  - WP PHP widget
-  - MathJax-Latex (change options: Force Load, Use wp-latex syntax?, Use MathJax CDN Service?)
+  * Options Framework
+  * Disable Comments
+  * CMS Page Order
+  * Multi-level Navigation Plugin
+  * WP Google Fonts
+  * WP PHP widget
+  * MathJax-Latex (change options: Force Load, Use wp-latex syntax?, Use MathJax CDN Service?)
 
 install blogpost
 ----------------
 
 The official README and source code of blogpost can be found at
-
-- http://srackham.wordpress.com/blogpost1/
-- https://code.google.com/p/blogpost/
-
-I implemented two changes on top of version 0.9.5:
+http://srackham.wordpress.com/blogpost1/ and
+https://code.google.com/p/blogpost/. I implemented two changes on top of
+version 0.9.5:
 
 1. allow more than the 10 last most recent posts/pages to show up in info
 2. fix inline-latex via the config macro +
    http://www.mail-archive.com/asciidoc@googlegroups.com/msg00104.html
 
-Clone it from https://github.com/tschaume/blogpost and see the README for install instructions.
+Clone it from https://github.com/tschaume/blogpost and see the README for
+install instructions.
 
 prepare for deployment
 ----------------------
 
 in your working dir:
 
-- create a symbolic link named ```blogpost.py``` linking to your blogpost installation
+- create a symbolic link named ```blogpost.py``` linking to your blogpost
+  installation
 - create a symbolic link named ```images``` linking to your image directory
 
 both are checked when invoking the Makefile.
